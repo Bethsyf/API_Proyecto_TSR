@@ -67,7 +67,7 @@ app.patch('/products/actualize', (req, res) => {
         $set:edicion,
     };
     conexion
-    .colletion('producto')
+    .collection('producto')
     .findOneAndUpdate(
         filtroProductos, 
         operacion, 
@@ -75,10 +75,10 @@ app.patch('/products/actualize', (req, res) => {
         (err, result) => {
             if (err) {
                 console.error('error actualizando el producto: ', err);
-                result.sendStatus(500);
+                res.sendStatus(500);
             } else{
                 console.log('actualizado con exito');
-                result.sendStatus(200);
+                res.sendStatus(200);
             }
         }
         );
@@ -91,9 +91,9 @@ app.delete('/products/delete', (req,res) => {
     .deleteOne(filtroProductos, (err,result) => {
         if (err) {
             console.error(err);
-            result.sendStatus(500);
+            res.sendStatus(500);
         } else {
-            result.sendStatus(200);
+            res.sendStatus(200);
         }
     });
 });
