@@ -1,0 +1,16 @@
+{
+  "name": "API_Proyecto_TSR",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scrips": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "repository": "https://github.com/Bethsyf/API_Proyecto_TSR",
+  "author": "Bethsy Falcon <bethsyfalcon@gmail.com>",
+  "private": null
+}
