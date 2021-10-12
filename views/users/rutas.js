@@ -5,7 +5,7 @@ import {
   editarUsuario,
   eliminarUsuario,
   consultarUsuario,
-} from '../../controllers/usuarios/controller.js';
+} from '../../controllers/usuarios/controllers.js';
 
 const rutasUsuario = Express.Router();
 
@@ -17,7 +17,7 @@ const genercCallback = (res) => (err, result) => {
   }
 };
 
-rutasVehiculo.route('/configuration').get((req, res) => {
+rutasUsuario.route('/configuration').get((req, res) => {
   console.log('alguien hizo get en la ruta /configuration');
   queryAllUser(genercCallback(res));
 });

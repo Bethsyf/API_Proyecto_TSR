@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import { conectarBD } from './db/db.js';
 import rutasProducto from './views/products/rutas.js';
 import rutasUsuario from './views/users/rutas.js';
-import rutasVenta from './views/ventas/rutas.js';
+import rutasVenta from './views/sales/rutas.js';
 
 dotenv.config({ path: './.env' });
 
