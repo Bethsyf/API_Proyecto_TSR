@@ -23,7 +23,7 @@ rutasProducto.route('/products').get((req, res) => {
 });
 
 rutasProducto.route('/products').post((req, res) => {
-  crearProducto(req.body, genercCallback(res));
+  crearProducto(req.body, res);
 });
 
 rutasProducto.route('/products/:id').get((req, res) => {

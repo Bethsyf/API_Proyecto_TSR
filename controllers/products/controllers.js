@@ -6,17 +6,21 @@ const queryAllProducts = async (callback) => {
   await baseDeDatos.collection('producto').find({}).limit(50).toArray(callback);
 };
 
-const crearProducto = async (datosProducto, callback) => {
-  if (
+const crearProducto = async (datosProducto, res) => {
+   try {
+     if (
     Object.keys(datosProducto).includes('description') &&
     Object.keys(datosProducto).includes('unitValue') &&
     Object.keys(datosProducto).includes('state')
   ) {
     const baseDeDatos = getDB();
    
-    await baseDeDatos.collection('producto').insertOne(datosProducto, callback);
-  } else {
-    return 'error';
+    await baseDeDatos.collection('producto').insertOne(datosProducto);
+    return res.status(200).json({msg:"Producto creado exitosamente"})
+  } return res.status(401).json({msg:"El Producto le falta propiedad"})
+  } catch(err) {
+    console.log(err)
+    return res.json({msg:"Ocurrio un error"});
   }
 };
 
