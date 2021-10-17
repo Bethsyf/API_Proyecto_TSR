@@ -6,19 +6,23 @@ const queryAllUser = async (callback) => {
   await baseDeDatos.collection('usuario').find({}).limit(50).toArray(callback);
 };
 
-const crearUsuario = async (datosUsuario, callback) => {
-  if (
+const crearUsuario = async (datosUsuario) => {
+  try {
+    if (
     Object.keys(datosUsuario).includes('name') &&
     Object.keys(datosUsuario).includes('surname') &&
-    Object.keys(datosUsuario).includes('mail') &&
+    Object.keys(datosUsuario).includes('email') &&
     Object.keys(datosUsuario).includes('state') &&
     Object.keys(datosUsuario).includes('role')
   ) {
     const baseDeDatos = getDB();
   
-    await baseDeDatos.collection('usuario').insertOne(datosUsuario, callback);
-  } else {
-    return 'error';
+    await baseDeDatos.collection('usuario').insertOne(datosUsuario);
+    return res.status(200).json({msg:"Usuario creado exitosamente"})
+  } return res.status(401).json({msg:"El Usuario le falta propiedad"})
+  } catch(err) {
+    console.log(err)
+    return res.json({msg:"Ocurrio un error"});
   }
 };
 

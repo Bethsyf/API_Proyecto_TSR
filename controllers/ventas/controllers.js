@@ -7,7 +7,8 @@ const queryAllSale = async (callback) => {
 };
 
 const crearVenta = async (datosVenta, callback) => {
-  if (
+  try {
+    if (
     Object.keys(datosVenta).includes('client') &&
     Object.keys(datosVenta).includes('identification') &&
     Object.keys(datosVenta).includes('product') &&
@@ -20,8 +21,11 @@ const crearVenta = async (datosVenta, callback) => {
     const baseDeDatos = getDB();
   
     await baseDeDatos.collection('venta').insertOne(datosVenta, callback);
-  } else {
-    return 'error';
+    return res.status(200).json({msg:"Producto creado exitosamente"})
+  } return res.status(401).json({msg:"El Producto le falta propiedad"})
+  } catch(err) {
+    console.log(err)
+    return res.json({msg:"Ocurrio un error"});
   }
 };
 
