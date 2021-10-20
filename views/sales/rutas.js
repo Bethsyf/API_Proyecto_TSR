@@ -22,7 +22,7 @@ rutasVenta.route('/sales').get((req, res) => {
   queryAllSale(genercCallback(res));
 });
 
-rutasVenta.route('/sales').post((req, res) => {
+rutasVenta.route('/newSales').post((req, res) => {
   crearVenta(req.body, genercCallback(res));
 });
 

@@ -1,6 +1,6 @@
 import Express from 'express';
 import {
-  queryAllUser,
+  queryAllUsers,
   crearUsuario,
   editarUsuario,
   eliminarUsuario,
@@ -19,11 +19,11 @@ const genercCallback = (res) => (err, result) => {
 
 rutasUsuario.route('/configuration').get((req, res) => {
   console.log('alguien hizo get en la ruta /configuration');
-  queryAllUser(genercCallback(res));
+  queryAllUsers(genercCallback(res));
 });
 
 rutasUsuario.route('/configuration').post((req, res) => {
-  crearUsuario(req.body, genercCallback(res));
+  crearUsuario(req.body, res);
 });
 
 rutasUsuario.route('/configuration/:id').get((req, res) => {
