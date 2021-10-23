@@ -1,12 +1,12 @@
 import { ObjectId } from 'mongodb';
 import { getDB } from '../../db/db.js';
 
-const queryAllUser = async (callback) => {
+const queryAllUsers = async (callback) => {
   const baseDeDatos = getDB();
   await baseDeDatos.collection('usuario').find({}).limit(50).toArray(callback);
 };
 
-const crearUsuario = async (datosUsuario) => {
+const crearUsuario = async (datosUsuario, res) => {
   try {
     if (
     Object.keys(datosUsuario).includes('name') &&
@@ -48,4 +48,4 @@ const eliminarUsuario = async (id, callback) => {
   await baseDeDatos.collection('usuario').deleteOne(filtroUsuario, callback);
 };
 
-export { queryAllUser, crearUsuario, consultarUsuario, editarUsuario, eliminarUsuario };
+export { queryAllUsers, crearUsuario, consultarUsuario, editarUsuario, eliminarUsuario };
